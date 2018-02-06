@@ -22,6 +22,12 @@ public class SchoolsController {
         return "school/index";
     }
 
+    @GetMapping("/schools/{id}")
+    public String showSchool(@PathVariable String id, Model model) {
+        model.addAttribute("school", schoolService.findById(Long.valueOf(id)));
+        return "school/show";
+    }
+
     @GetMapping("/schools/new")
     public String newSchool(Model model) {
         model.addAttribute("school", new SchoolCommand());
