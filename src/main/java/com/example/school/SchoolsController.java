@@ -4,10 +4,7 @@ import com.example.school.commands.SchoolCommand;
 import com.example.school.services.SchoolService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 //@RequestMapping("/schools")
@@ -34,6 +31,18 @@ public class SchoolsController {
     @PostMapping({"/schools", "/schools/"})
     public String saveOrUpdate(@ModelAttribute SchoolCommand command) {
         SchoolCommand savedCommand = schoolService.saveSchoolCommand(command);
+        return "redirect:/schools";
+    }
+
+    @GetMapping("/schools/{id}/update")
+    public String updateSchool(@PathVariable String id, Model model) {
+        model.addAttribute("school", schoolService.findCommandById(Long.valueOf(id)));
+        return "school/form";
+    }
+
+    @GetMapping("/schools/{id}/delete")
+    public String deleteById(@PathVariable String id) {
+        schoolService.deleteById(Long.valueOf(id));
         return "redirect:/schools";
     }
 

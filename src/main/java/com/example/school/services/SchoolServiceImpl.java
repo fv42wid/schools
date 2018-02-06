@@ -49,4 +49,14 @@ public class SchoolServiceImpl implements SchoolService {
         School savedSchool = schoolRepository.save(detachedSchool);
         return schoolToSchoolCommand.convert(savedSchool);
     }
+
+    @Override
+    public SchoolCommand findCommandById(Long id) {
+        return schoolToSchoolCommand.convert(findById(id));
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        schoolRepository.deleteById(id);
+    }
 }

@@ -10,4 +10,6 @@ public interface SchoolService {
     Set<School> getSchools();
     School findById(Long id);
     SchoolCommand saveSchoolCommand(SchoolCommand command);
+    SchoolCommand findCommandById(Long id);
+    void deleteById(Long id);
 }
