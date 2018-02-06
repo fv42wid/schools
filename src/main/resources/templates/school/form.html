@@ -15,6 +15,7 @@
         <div class="col-md-8 col-md-offset-2">
             <h1>New School</h1>
             <form th:object="${school}" th:action="@{/schools}" method="post">
+                <input type="hidden" th:field="*{id}" >
                 <div class="form-group">
                     <label>Name</label>
                     <input type="text" class="form-control" th:field="*{name}" placeholder="School Name">

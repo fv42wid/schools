@@ -32,9 +32,9 @@
                     <td th:text="${school.startDate}">Start Date</td>
                     <td th:text="${school.endDate}">End Date</td>
                     <td th:text="${school.degree}">Degree</td>
-                    <td>View</td>
-                    <td>Edit</td>
-                    <td>Delete</td>
+                    <td><a href="#" th:href="@{'/schools/' + ${school.id}}">View</a></td>
+                    <td><a href="#" th:href="@{'/schools/' + ${school.id} + '/update'}">Edit</a> </td>
+                    <td><a href="#" th:href="@{'/schools/' + ${school.id} + '/delete'}">Delete</a> </td>
                 </tr>
                 </tbody>
             </table>
