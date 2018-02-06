@@ -1,5 +1,8 @@
 package com.example.school.services;
 
+import com.example.school.commands.SchoolCommand;
+import com.example.school.converters.SchoolCommandToSchool;
+import com.example.school.converters.SchoolToSchoolCommand;
 import com.example.school.models.School;
 import com.example.school.repositories.SchoolRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -14,9 +17,15 @@ import java.util.Set;
 public class SchoolServiceImpl implements SchoolService {
 
     private final SchoolRepository schoolRepository;
+    private final SchoolCommandToSchool schoolCommandToSchool;
+    private final SchoolToSchoolCommand schoolToSchoolCommand;
 
-    public SchoolServiceImpl(SchoolRepository schoolRepository) {
+    public SchoolServiceImpl(SchoolRepository schoolRepository,
+                             SchoolCommandToSchool schoolCommandToSchool,
+                             SchoolToSchoolCommand schoolToSchoolCommand) {
         this.schoolRepository = schoolRepository;
+        this.schoolCommandToSchool = schoolCommandToSchool;
+        this.schoolToSchoolCommand = schoolToSchoolCommand;
     }
 
     @Override
@@ -31,5 +40,13 @@ public class SchoolServiceImpl implements SchoolService {
         Optional<School> schoolOptional = schoolRepository.findById(id);
 
         return schoolOptional.get();
+    }
+
+    @Override
+    public SchoolCommand saveSchoolCommand(SchoolCommand command) {
+        School detachedSchool = schoolCommandToSchool.convert(command);
+
+        School savedSchool = schoolRepository.save(detachedSchool);
+        return schoolToSchoolCommand.convert(savedSchool);
     }
 }
