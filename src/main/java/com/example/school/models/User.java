@@ -14,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Date;
 
 @Entity
 @Data
@@ -30,6 +31,7 @@ public class User implements UserDetails {
     private final String username;
     private final String password;
     private final String fullname;
+    private final Date createdAt;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
