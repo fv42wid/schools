@@ -15,24 +15,53 @@
         <div class="col-md-8 offset-md-2">
             <h1>New School</h1>
             <form th:object="${school}" th:action="@{/schools}" method="post">
+
+                <div th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
+                    <p>Please correct the errors below</p>
+                </div>
+
                 <input type="hidden" th:field="*{id}" >
                 <div class="form-group">
                     <label>Name</label>
-                    <input type="text" class="form-control" th:field="*{name}" placeholder="School Name">
+                    <input type="text" class="form-control" th:field="*{name}" th:errorclass="is-invalid" placeholder="School Name">
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('name')}">
+                        <ul>
+                            <li th:each="err : ${#fields.errors('name')}" th:text="${err}"></li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label>Start Date</label>
-                    <input type="text" class="form-control" th:field="*{startDate}" placeholder="Start Date">
+                    <input type="text" class="form-control" th:field="*{startDate}" th:errorclass="is-invalid" placeholder="Start Date">
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('startDate')}">
+                        <ul>
+                            <li th:each="err : ${#fields.errors('startDate')}" th:text="${err}"></li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label>End Date</label>
-                    <input type="text" class="form-control" th:field="*{endDate}" placeholder="End Date">
+                    <input type="text" class="form-control" th:field="*{endDate}" th:errorclass="is-invalid" placeholder="End Date">
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('endDate')}">
+                        <ul>
+                            <li th:each="err : ${#fields.errors('endDate')}" th:text="${err}"></li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label>Degree</label>
-                    <input type="text" class="form-control" th:field="*{degree}" placeholder="Degree Earned">
+                    <input type="text" class="form-control" th:field="*{degree}" th:errorclass="is-invalid" placeholder="Degree Earned">
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('degree')}" th:text="${err}">
+                        <ul>
+                            <li th:each="err : ${#fields.errors('degree')}"></li>
+                        </ul>
+                    </div>
                 </div>
-
+                <div class="row justify-content-end">
+                    <div class="col-md-2">
+                        <button type="submit" class="btn btn-primary">Create</button>
+                    </div>
+                </div>
 
             </form>
         </div>

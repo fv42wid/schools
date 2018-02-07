@@ -4,7 +4,10 @@ import com.example.school.commands.SchoolCommand;
 import com.example.school.services.SchoolService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @Controller
 //@RequestMapping("/schools")
@@ -35,7 +38,11 @@ public class SchoolsController {
     }
 
     @PostMapping({"/schools", "/schools/"})
-    public String saveOrUpdate(@ModelAttribute SchoolCommand command) {
+    public String saveOrUpdate(@Valid @ModelAttribute("school") SchoolCommand command, Errors errors) {
+        if(errors.hasErrors()) {
+            return "school/form";
+        }
+
         SchoolCommand savedCommand = schoolService.saveSchoolCommand(command);
         return "redirect:/schools";
     }
