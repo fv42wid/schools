@@ -1,4 +1,4 @@
-package com.example.school;
+package com.example.school.controllers;
 
 import com.example.school.commands.SchoolCommand;
 import com.example.school.services.SchoolService;
