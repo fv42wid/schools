@@ -8,13 +8,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Date;
+import javax.persistence.*;
+import java.util.*;
 
 @Entity
 @Data
@@ -32,6 +27,9 @@ public class User implements UserDetails {
     private final String password;
     private final String fullname;
     private final Date createdAt;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private Set<School> schools = new HashSet<>();
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

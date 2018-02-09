@@ -2,10 +2,7 @@ package com.example.school.models;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -20,4 +17,7 @@ public class School {
     private String endDate;
     private String degree;
     private Date createdAt;
+
+    @ManyToOne
+    private User user;
 }
