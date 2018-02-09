@@ -39,7 +39,7 @@ public class SpringSecConfig extends WebSecurityConfigurerAdapter {
                 .headers().frameOptions().disable()
                 .and()
                 .authorizeRequests()
-                .antMatchers("/schools").access("hasRole('ROLE_USER')")
+                .antMatchers("/schools/new").access("hasRole('ROLE_USER')")
                 .antMatchers("/**").access("permitAll")
                 .and()
                 .formLogin()
