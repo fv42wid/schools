@@ -1,22 +1,27 @@
 package com.example.school.controllers;
 
 import com.example.school.commands.SchoolCommand;
+import com.example.school.models.User;
 import com.example.school.services.SchoolService;
+import com.example.school.services.UserRepositoryUserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.security.Principal;
 
 @Controller
 //@RequestMapping("/schools")
 public class SchoolsController {
 
     private final SchoolService schoolService;
+    private final UserRepositoryUserDetailsService userDetailsService;
 
-    public SchoolsController(SchoolService schoolService) {
+    public SchoolsController(SchoolService schoolService, UserRepositoryUserDetailsService userDetailsService) {
         this.schoolService = schoolService;
+        this.userDetailsService = userDetailsService;
     }
 
     @GetMapping({"/schools", "/schools/"})
@@ -38,12 +43,14 @@ public class SchoolsController {
     }
 
     @PostMapping({"/schools", "/schools/"})
-    public String saveOrUpdate(@Valid @ModelAttribute("school") SchoolCommand command, Errors errors) {
+    public String saveOrUpdate(@Valid @ModelAttribute("school") SchoolCommand command, Principal principal, Errors errors) {
         if(errors.hasErrors()) {
             return "school/form";
         }
 
-        SchoolCommand savedCommand = schoolService.saveSchoolCommand(command);
+        User currentUser = userDetailsService.loadUserByUsername(principal.getName());
+
+        SchoolCommand savedCommand = schoolService.saveSchoolCommand(command, currentUser);
         return "redirect:/schools";
     }
 

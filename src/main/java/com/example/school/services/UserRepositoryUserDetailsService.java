@@ -2,10 +2,11 @@ package com.example.school.services;
 
 import com.example.school.models.User;
 import com.example.school.repositories.UserRepository;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class UserRepositoryUserDetailsService implements UserDetailsService {
@@ -17,11 +18,16 @@ public class UserRepositoryUserDetailsService implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public User loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findByUsername(username);
         if(user != null) {
             return user;
         }
         throw new UsernameNotFoundException("user '" + username + "' not found");
+    }
+
+    public Optional<User> findUserById(Long id) {
+        Optional<User> user = userRepository.findById(id);
+        return user;
     }
 }
