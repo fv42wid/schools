@@ -16,17 +16,17 @@
 <body>
 
 <nav class="navbar fixed-top navbar-expand-md navbar-dark bg-primary">
-    <a class="navbar-brand" href="#">Frank Vinci</a>
+    <a class="navbar-brand" href="#" th:href="@{/}">Frank Vinci</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="#">Experience</a>
+                <a class="nav-link" href="#" th:href="@{/schools}">Experience</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Education</a>
+                <a class="nav-link" href="#" th:href="@{/schools}">Education</a>
             </li>
         </ul>
 
@@ -52,12 +52,28 @@
 <div class="container main-container">
     <div class="row">
         <div class="col-md-8 offset-md-2">
-            <h1>Welcome</h1>
+            <div class="jumbotron">
+                <h1 class="display-4">Welcome To My Java Spring Demo</h1>
+                <p class="lead">
+                    This site is built using Java 8, Spring 5, Spring Boot 2, Spring Security 5, JPA, Project Lombok,
+                    Thymeleaf and Bootstrap 4.
+                </p>
+                <hr class="my-4">
+                <p>
+                    Check out the source code <a class="btn btn-primary" href="https://github.com/fv42wid/schools">Here</a>
+                </p>
+            </div>
+
+            <h3>Education</h3>
             <div class="card" th:each="school : ${user.schools}">
                 <div class="card-body">
                     <h5 class="card-title" th:text="${school.name}"></h5>
+                    <h6 class="card-subtitle text-muted" th:text="${school.startDate} + ' - ' + ${school.endDate}"></h6>
+                    <p class="card-text" th:text="${school.degree}"></p>
                 </div>
             </div>
+
+            <h3>Experience</h3>
         </div>
     </div>
 </div>
