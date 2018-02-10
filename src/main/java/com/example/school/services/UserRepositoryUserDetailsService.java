@@ -26,8 +26,12 @@ public class UserRepositoryUserDetailsService implements UserDetailsService {
         throw new UsernameNotFoundException("user '" + username + "' not found");
     }
 
-    public Optional<User> findUserById(Long id) {
+    public User findUserById(Long id) {
         Optional<User> user = userRepository.findById(id);
-        return user;
+        if(!user.isPresent()) {
+            //throw new RuntimeException("User not found");
+            return new User(null, null, null, null);
+        }
+        return user.get();
     }
 }
