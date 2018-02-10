@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
-    <title>School</title>
+    <title>Title</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
           crossorigin="anonymous"
@@ -50,14 +50,28 @@
 <div class="container main-container">
     <div class="row">
         <div class="col-md-8 offset-md-2">
-            <div class="card">
-                <h1 class="card-header" th:text="${school.name}">Name</h1>
-                <div class="card-body">
-                    <h2 class="card-title" th:text="${school.degree}">Degree</h2>
-                    <p class="card-text" th:text="${school.startDate} + ' - ' + ${school.endDate}">Timeline</p>
-                </div>
-            </div>
-
+            <h1>Jobs</h1>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Company</th>
+                    <th>Position</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th></th>
+                    <th></th>
+                    <th><a href="#" th:href="@{/jobs/new}" class="btn btn-success">Create</a> </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="job : ${jobs}">
+                    <td th:text="${job.company}"></td>
+                    <td th:text="${job.position}"></td>
+                    <td th:text="${job.startDate}"></td>
+                    <td th:text="${job.endDate}"></td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

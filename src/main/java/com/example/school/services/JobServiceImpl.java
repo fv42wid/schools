@@ -51,7 +51,8 @@ public class JobServiceImpl implements JobService {
         return jobToJobCommand.convert(savedJob);
     }
 
-    @Override JobCommand findCommandById(Long id) {
+    @Override
+    public JobCommand findCommandById(Long id) {
         return jobToJobCommand.convert(findById(id));
     }
 

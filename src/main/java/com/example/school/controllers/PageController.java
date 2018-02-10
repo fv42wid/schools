@@ -1,13 +1,9 @@
 package com.example.school.controllers;
 
-import com.example.school.models.User;
-import com.example.school.repositories.UserRepository;
 import com.example.school.services.UserRepositoryUserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
-import java.util.Optional;
 
 @Controller
 public class PageController {
