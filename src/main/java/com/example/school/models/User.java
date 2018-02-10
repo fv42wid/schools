@@ -12,7 +12,6 @@ import java.util.*;
 @Data
 @NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
 @RequiredArgsConstructor
-@EqualsAndHashCode(exclude = "schools")
 public class User implements UserDetails {
 
     private static final long serialVersionUID = 1L;
@@ -28,6 +27,9 @@ public class User implements UserDetails {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private Set<School> schools = new HashSet<>();
+
+    @OneToMany(cascade =  CascadeType.ALL, mappedBy = "user")
+    private Set<Job> jobs = new HashSet<>();
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

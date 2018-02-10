@@ -9,15 +9,15 @@ import java.util.Date;
 @Entity
 @Data
 @EqualsAndHashCode(exclude = "user")
-public class School {
+public class Job {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
+    private String company;
+    private String position;
     private String startDate;
     private String endDate;
-    private String degree;
     private Date createdAt;
 
     @ManyToOne
