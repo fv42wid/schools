@@ -7,10 +7,7 @@ import com.example.school.services.UserRepositoryUserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.security.Principal;
@@ -48,5 +45,11 @@ public class JobsController {
         User currentUser = userService.loadUserByUsername(principal.getName());
         JobCommand savedCommand = jobService.saveJobCommand(command, currentUser);
         return "redirect:/jobs";
+    }
+
+    @GetMapping("/{id}/update")
+    public String updateJob(@PathVariable String id, Model model) {
+        model.addAttribute("job", jobService.findCommandById(Long.valueOf(id)));
+        return "jobs/form";
     }
 }

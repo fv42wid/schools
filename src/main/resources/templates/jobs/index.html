@@ -69,6 +69,9 @@
                     <td th:text="${job.position}"></td>
                     <td th:text="${job.startDate}"></td>
                     <td th:text="${job.endDate}"></td>
+                    <td><a href="#" th:href="@{'/jobs/' + ${job.id}}">View</a> </td>
+                    <td><a href="#" th:href="@{'/jobs/' + ${job.id} + '/update'}">Edit</a> </td>
+                    <td><a href="#" th:href="@{'/jobs/' + ${job.id} + '/delete'}">Delete</a> </td>
                 </tr>
                 </tbody>
             </table>
