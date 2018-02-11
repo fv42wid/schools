@@ -1,5 +1,6 @@
 package com.example.school.controllers;
 
+import com.example.school.commands.JobCommand;
 import com.example.school.services.JobService;
 import com.example.school.services.UserRepositoryUserDetailsService;
 import org.springframework.stereotype.Controller;
@@ -23,5 +24,11 @@ public class JobsController {
     public String showAllJobs(Model model) {
         model.addAttribute("jobs", jobService.getJobs());
         return "jobs/index";
+    }
+
+    @GetMapping("/new")
+    public String newJob(Model model) {
+        model.addAttribute("job", new JobCommand());
+        return "jobs/form";
     }
 }
