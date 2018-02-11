@@ -43,7 +43,7 @@ public class SchoolsController {
     }
 
     @PostMapping({"/schools", "/schools/"})
-    public String saveOrUpdate(@Valid @ModelAttribute("school") SchoolCommand command, Principal principal, Errors errors) {
+    public String saveOrUpdate(@Valid @ModelAttribute("school") SchoolCommand command, Errors errors, Principal principal) {
         if(errors.hasErrors()) {
             return "school/form";
         }
