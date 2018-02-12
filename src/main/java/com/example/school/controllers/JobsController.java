@@ -4,6 +4,7 @@ import com.example.school.commands.JobCommand;
 import com.example.school.models.User;
 import com.example.school.services.JobService;
 import com.example.school.services.UserRepositoryUserDetailsService;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -30,6 +31,12 @@ public class JobsController {
         return "jobs/index";
     }
 
+    @GetMapping("/{id}")
+    public String showJob(@PathVariable String id, Model model) {
+        model.addAttribute("job", jobService.findById(Long.valueOf(id)));
+        return "jobs/show";
+    }
+
     @GetMapping("/new")
     public String newJob(Model model) {
         model.addAttribute("job", new JobCommand());
@@ -51,5 +58,11 @@ public class JobsController {
     public String updateJob(@PathVariable String id, Model model) {
         model.addAttribute("job", jobService.findCommandById(Long.valueOf(id)));
         return "jobs/form";
+    }
+
+    @GetMapping("/{id}/delete")
+    public String deleteJob(@PathVariable String id) {
+        jobService.deleteById(Long.valueOf(id));
+        return "redirect:/jobs";
     }
 }
