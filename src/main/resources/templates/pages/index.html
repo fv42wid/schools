@@ -74,6 +74,13 @@
             </div>
 
             <h3>Experience</h3>
+            <div class="card" th:each="job : ${user.jobs}">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${job.company}"></h5>
+                    <h6 class="card-subtitle text-muted" th:text="${job.startDate} + ' - ' + ${job.endDate}"></h6>
+                    <p class="card-text" th:text="${job.position}"></p>
+                </div>
+            </div>
         </div>
     </div>
 </div>

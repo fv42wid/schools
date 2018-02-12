@@ -26,9 +26,11 @@ public class User implements UserDetails {
     private final Date createdAt;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    @OrderBy("id ASC")
     private Set<School> schools = new HashSet<>();
 
     @OneToMany(cascade =  CascadeType.ALL, mappedBy = "user")
+    @OrderBy("id DESC")
     private Set<Job> jobs = new HashSet<>();
 
     @Override
