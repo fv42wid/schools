@@ -1,5 +1,5 @@
 databaseChangeLog:
-  - changeSet
+  - changeSet:
     id: 1
     author: Frank Vinci
     changes:
