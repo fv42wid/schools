@@ -4,81 +4,81 @@ databaseChangeLog:
       author: Frank Vinci
       changes:
         - createTable:
-            tableName: USER
+            tableName: user
             columns:
               - column:
-                  name: ID
+                  name: id
                   type: int
                   autoIncrement: true
                   constraints:
                     primaryKey: true
                     nullable: false
               - column:
-                  name: USERNAME
+                  name: username
                   type: varchar(255)
               - column:
-                  name: PASSWORD
+                  name: password
                   type: varchar(255)
               - column:
-                  name: FULLNAME
+                  name: fullname
                   type: varchar(255)
               - column:
-                  name: CREATED_AT
+                  name: created_at
                   type:  datetime
         - createTable:
-            tableName: SCHOOL
+            tableName: school
             columns:
               - column:
-                  name: ID
+                  name: id
                   type: int
                   autoIncrement: true
                   constraints:
                     primaryKey: true
                     nullable: false
               - column:
-                  name: NAME
+                  name: name
                   type: varchar(255)
               - column:
-                  name: DEGREE
+                  name: degree
                   type: varchar(255)
               - column:
-                  name: START_DATE
+                  name: start_date
                   type: varchar(255)
               - column:
-                  name: END_DATE
+                  name: end_date
                   type: varchar(255)
               - column:
-                  name: USER_ID
+                  name: user_id
                   type: int
               - column:
-                  name: CREATED_AT
+                  name: created_at
                   type: datetime
         - createTable:
-            tableName: JOB
+            tableName: job
             columns:
               - column:
-                  name: ID
+                  name: id
                   type: int
                   autoIncrement: true
                   constraints:
                     primaryKey: true
                     nullable: false
               - column:
-                  name: COMPANY
+                  name: company
                   type: varchar(255)
               - column:
-                  name: POSITION
+                  name: position
                   type: varchar(255)
               - column:
-                  name: USER_ID
+                  name: user_id
                   type: int
               - column:
-                  name: START_DATE
+                  name: start_date
                   type: varchar(255)
               - column:
-                  name: END_DATE
+                  name: end_date
                   type: varchar(255)
               - column:
-                  name: CREATED_AT
+                  name: created_at
                   type: datetime
 
