@@ -4,81 +4,81 @@ databaseChangeLog:
       author: Frank Vinci
       changes:
         - createTable:
-          tableName: USER
-          columns:
-            - column:
-              name: ID
-              type: int
-              autoIncrement: true
-              constraints:
-                primaryKey: true
-                nullable: false
-            - column:
-              name: USERNAME
-              type: varchar(255)
-            - column:
-              name: PASSWORD
-              type: varchar(255)
-            - column:
-              name: FULLNAME
-              type: varchar(255)
-            - column:
-              name: CREATED_AT
-              type:  datetime
+            tableName: USER
+            columns:
+              - column:
+                  name: ID
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: USERNAME
+                  type: varchar(255)
+              - column:
+                  name: PASSWORD
+                  type: varchar(255)
+              - column:
+                  name: FULLNAME
+                  type: varchar(255)
+              - column:
+                  name: CREATED_AT
+                  type:  datetime
         - createTable:
-          tableName: SCHOOL
-          columns:
-            - column:
-              name: ID
-              type: int
-              autoIncrement: true
-              constraints:
-                primaryKey: true
-                nullable: false
-            - column:
-              name: NAME
-              type: varchar(255)
-            - column:
-              name: DEGREE
-              type: varchar(255)
-            - column:
-              name: START_DATE
-              type: varchar(255)
-            - column:
-              name: END_DATE
-              type: varchar(255)
-            - column:
-              name: USER_ID
-              type: int
-            - column:
-              name: CREATED_AT
-              type: datetime
+            tableName: SCHOOL
+            columns:
+              - column:
+                  name: ID
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: NAME
+                  type: varchar(255)
+              - column:
+                  name: DEGREE
+                  type: varchar(255)
+              - column:
+                  name: START_DATE
+                  type: varchar(255)
+              - column:
+                  name: END_DATE
+                  type: varchar(255)
+              - column:
+                  name: USER_ID
+                  type: int
+              - column:
+                  name: CREATED_AT
+                  type: datetime
         - createTable:
-          tableName: JOB
-          columns:
-            - column:
-              name: ID
-              type: int
-              autoIncrement: true
-              constraints:
-                primaryKey: true
-                nullable: false
-            - column:
-              name: COMPANY
-              type: varchar(255)
-            - column:
-              name: POSITION
-              type: varchar(255)
-            - column:
-              name: USER_ID
-              type: int
-            - column:
-              name: START_DATE
-              type: varchar(255)
-            - column:
-              name: END_DATE
-              type: varchar(255)
-            - column:
-              name: CREATED_AT
-              type: datetime
+            tableName: JOB
+            columns:
+              - column:
+                  name: ID
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: COMPANY
+                  type: varchar(255)
+              - column:
+                  name: POSITION
+                  type: varchar(255)
+              - column:
+                  name: USER_ID
+                  type: int
+              - column:
+                  name: START_DATE
+                  type: varchar(255)
+              - column:
+                  name: END_DATE
+                  type: varchar(255)
+              - column:
+                  name: CREATED_AT
+                  type: datetime
 
