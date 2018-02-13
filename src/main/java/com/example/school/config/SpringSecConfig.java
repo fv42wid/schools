@@ -3,6 +3,7 @@ package com.example.school.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -40,6 +41,11 @@ public class SpringSecConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers("/schools/new").access("hasRole('ROLE_USER')")
+                .antMatchers("/schools/**/update").access("hasRole('ROLE_USER')")
+                .antMatchers(HttpMethod.POST, "/schools").access("hasRole('ROLE_USER')")
+                .antMatchers("/jobs/new").access("hasRole('ROLE_USER')")
+                .antMatchers("/jobs/**/update").access("hasRole('ROLE_USER')")
+                .antMatchers(HttpMethod.POST, "/jobs").access("hasRole('ROLE_USER')")
                 .antMatchers("/**").access("permitAll")
                 .and()
                 .formLogin()
