@@ -9,6 +9,7 @@ import javax.persistence.*;
 import java.util.*;
 
 @Entity
+@Table(name = "users")
 @Data
 @NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
 @RequiredArgsConstructor
