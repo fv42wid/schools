@@ -81,3 +81,4 @@ databaseChangeLog:
               - column:
                   name: created_at
                   type: datetime
+
