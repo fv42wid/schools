@@ -82,3 +82,10 @@ databaseChangeLog:
                   name: created_at
                   type: datetime
 
+  - changeSet:
+      id: 2
+      author: Frank Vinci
+      changes:
+        - renameTable:
+            newTableName: users
+            oldTableName: user
