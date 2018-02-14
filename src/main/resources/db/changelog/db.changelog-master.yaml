@@ -89,3 +89,31 @@ databaseChangeLog:
         - renameTable:
             newTableName: users
             oldTableName: user
+
+  - changeSet:
+      id: 3
+      author: Frank Vinci
+      changes:
+        - createTable:
+            tableName: roles
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(255)
+        - createTable:
+            tableName: user_roles
+            columns:
+              - column:
+                  name: user_id
+                  type: int
+              - column:
+                  name: role_id
+                  type: int
+
