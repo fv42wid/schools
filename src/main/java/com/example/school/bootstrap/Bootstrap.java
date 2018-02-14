@@ -18,11 +18,11 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
         Role role1 = new Role();
-        role1.setName("USER");
+        role1.setName("ROLE_USER");
         roleService.saveRole(role1);
 
         Role role2 = new Role();
-        role2.setName("ADMIN");
+        role2.setName("ROLE_ADMIN");
         roleService.saveRole(role2);
     }
 }

@@ -40,18 +40,19 @@ public class SpringSecConfig extends WebSecurityConfigurerAdapter {
                 .headers().frameOptions().disable()
                 .and()
                 .authorizeRequests()
-                .antMatchers("/schools/new").access("hasRole('ROLE_USER')")
-                .antMatchers("/schools/**/update").access("hasRole('ROLE_USER')")
-                .antMatchers(HttpMethod.POST, "/schools").access("hasRole('ROLE_USER')")
-                .antMatchers("/jobs/new").access("hasRole('ROLE_USER')")
-                .antMatchers("/jobs/**/update").access("hasRole('ROLE_USER')")
-                .antMatchers(HttpMethod.POST, "/jobs").access("hasRole('ROLE_USER')")
+                .antMatchers("/schools/new").access("hasRole('ROLE_ADMIN')")
+                .antMatchers("/schools/**/update").access("hasRole('ROLE_ADMIN')")
+                .antMatchers(HttpMethod.POST, "/schools").access("hasRole('ROLE_ADMIN')")
+                .antMatchers("/jobs/new").access("hasRole('ROLE_ADMIN')")
+                .antMatchers("/jobs/**/update").access("hasRole('ROLE_ADMIN')")
+                .antMatchers(HttpMethod.POST, "/jobs").access("hasRole('ROLE_ADMIN')")
                 .antMatchers("/**").access("permitAll")
                 .and()
                 .formLogin()
                 .loginPage("/login")
                 .and()
                 .logout()
-                .logoutSuccessUrl("/");
+                .logoutSuccessUrl("/")
+                .and().exceptionHandling().accessDeniedPage("/");
     }
 }
